@@ -2,26 +2,41 @@
   margin:0;
   padding:0;
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+
 }
+
 .father-search{
   margin-left: 10px;
   margin-top: 10px;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 #search {
-
+ margin-left: 5px;
+ width: 150px;
+ height: 25px;
 }
 #search-button{
+  height: 25px;
   width:30px;
   margin-left: 10px;
 }
 .foundedFilms{
-  border:2px solid black;
+  border:5px outset grey;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  width: 250px;
+  height: 100px;
+  margin: 15px;
 }
-h1{
-  display: none;
+.rosso{
+  color: red;
+}
+.contenitor{
+  display: flex;
+  flex-wrap: wrap;
+
 }
