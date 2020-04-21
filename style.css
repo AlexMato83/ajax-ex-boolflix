@@ -3,12 +3,13 @@
   padding:0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
+  background: #D3D3D3;
 
 }
 
 .father-search{
-  margin-left: 10px;
-  margin-top: 10px;
+  background: black;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,20 +18,32 @@
  margin-left: 5px;
  width: 150px;
  height: 25px;
+ background: white;
 }
 #search-button{
   height: 25px;
-  width:30px;
+  width:80px;
   margin-left: 10px;
+  background: white;
+}
+label {
+  color:white;
+  background: black;
 }
 .foundedFilms{
+  background: #F0F8FF;
   border:5px outset grey;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 250px;
   height: 100px;
   margin: 15px;
+  overflow: auto;
+}
+.foundedFilms *{
+  color:red;
+  background: #F0F8FF;
 }
 .rosso{
   color: red;
