@@ -1,0 +1,27 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.father-search{
+  margin-left: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+#search {
+
+}
+#search-button{
+  width:30px;
+  margin-left: 10px;
+}
+.foundedFilms{
+  border:2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+h1{
+  display: none;
+}
