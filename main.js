@@ -54,7 +54,7 @@ $(document).ready(function() {
                 var context = {
                     title: ("Titolo del film : " + ogniFilms.title),
                     origTitle : ("Titolo originale : " + ogniFilms.original_title),
-                    language : ("Linguaggio: " + ogniFilms.original_language),
+                    language : "<img src='flags/"+ogniFilms.original_language+".png' alt=''>",
                     vote : stellinaPiena.repeat(stellaPiena) + stellinaVuota.repeat(stellaVuota)
                 };
                 var risultatoDaAggiungere = template(context);
