@@ -37,7 +37,7 @@ label {
   flex-direction: column;
   justify-content: space-evenly;
   width: 250px;
-  height: 100px;
+  height: 150px;
   margin: 15px;
   overflow: auto;
 }
@@ -52,4 +52,8 @@ label {
   display: flex;
   flex-wrap: wrap;
 
+}
+.language img{
+  width: 30px;
+  height: auto;
 }

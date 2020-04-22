@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script src="https://kit.fontawesome.com/577c099c56.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -27,8 +28,10 @@
       <div class="foundedFilms">
         <span class="title">{{title}}</span>
         <span class="originaltitle">{{origTitle}}</span>
-        <span class="language">{{language}}</span>
-        <span class="vote">{{vote}}</span>
+        <span class="language">{{{language}}}</span>
+        <span class="vote">{{{vote}}}</span>
+
+
       </div>
     </script>
     <!-- fine TEMPLATE -->

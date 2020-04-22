@@ -38,19 +38,24 @@ $(document).ready(function() {
                 // INIZIO OPERAZIONI PER IL VOTO
                 // salvo il voto in una var
                 var voto = ogniFilms.vote_average;
-                console.log(voto);
+                console.log("voto del film: " + voto);
                 // divido il voto per 2 portandolo in scala 1 a 5
                 var diviso = voto / 2;
+                console.log("voto del film diviso 2: " + diviso);
                 // arrotondo il risultato a numero intero
-                var arrotondato = Math.round(diviso);
-                console.log(arrotondato);
+                var stellaPiena = Math.round(diviso);
+                console.log("voto arrotondato: " + stellaPiena);
+                console.log("numero di stelle piene: " + stellaPiena);
+                var stellaVuota = 5 - stellaPiena;
+                console.log("numero di stelle vuote: " +stellaVuota);
+                var stellinaPiena = '<i class="fas fa-star"></i>';
+                var stellinaVuota = '<i class="far fa-star"></i>';
                 // FINE OPERAZIONI PER IL VOTO
-
                 var context = {
                     title: ("Titolo del film : " + ogniFilms.title),
                     origTitle : ("Titolo originale : " + ogniFilms.original_title),
                     language : ("Linguaggio: " + ogniFilms.original_language),
-                    vote : ("voto del film: " + arrotondato)
+                    vote : stellinaPiena.repeat(stellaPiena) + stellinaVuota.repeat(stellaVuota)
                 };
                 var risultatoDaAggiungere = template(context);
                 $(".contenitor").append(risultatoDaAggiungere);
@@ -84,19 +89,25 @@ $(document).ready(function() {
                 // INIZIO OPERAZIONI PER IL VOTO
                 // salvo il voto in una var
                 var voto = ogniFilms.vote_average;
-                console.log(voto);
+                console.log("voto del film: " + voto);
                 // divido il voto per 2 portandolo in scala 1 a 5
                 var diviso = voto / 2;
+                console.log("voto del film diviso 2: " + diviso);
                 // arrotondo il risultato a numero intero
-                var arrotondato = Math.round(diviso);
-                console.log(arrotondato);
+                var stellaPiena = Math.round(diviso);
+                console.log("voto arrotondato: " + stellaPiena);
+                console.log("numero di stelle piene: " + stellaPiena);
+                var stellaVuota = 5 - stellaPiena;
+                console.log("numero di stelle vuote: " +stellaVuota);
+                var stellinaPiena = '<i class="fas fa-star"></i>';
+                var stellinaVuota = '<i class="far fa-star"></i>';
                 // FINE OPERAZIONI PER IL VOTO
 
                 var context = {
                     title: ("Titolo del film : " + ogniFilms.name),
                     origTitle : ("Titolo originale : " + ogniFilms.original_name),
-                    language : ("Linguaggio: " + ogniFilms.original_language),
-                    vote : ("voto del film: " + arrotondato)
+                    language : "<img src='flags/"+ogniFilms.original_language+".png' alt=''>",
+                    vote : stellinaPiena.repeat(stellaPiena) + stellinaVuota.repeat(stellaVuota)
                 };
                 var risultatoDaAggiungere = template(context);
                 $(".contenitor").append(risultatoDaAggiungere);
