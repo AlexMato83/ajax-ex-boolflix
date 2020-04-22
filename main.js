@@ -33,11 +33,24 @@ $(document).ready(function() {
               for (var i = 0; i < listaFilms.length; i++){
                 console.log(listaFilms[i]);
                 var ogniFilms = listaFilms[i];
+
+
+                // INIZIO OPERAZIONI PER IL VOTO
+                // salvo il voto in una var
+                var voto = ogniFilms.vote_average;
+                console.log(voto);
+                // divido il voto per 2 portandolo in scala 1 a 5
+                var diviso = voto / 2;
+                // arrotondo il risultato a numero intero
+                var arrotondato = Math.round(diviso);
+                console.log(arrotondato);
+                // FINE OPERAZIONI PER IL VOTO
+
                 var context = {
                     title: ("Titolo del film : " + ogniFilms.title),
                     origTitle : ("Titolo originale : " + ogniFilms.original_title),
                     language : ("Linguaggio: " + ogniFilms.original_language),
-                    vote : ("voto del film: " + ogniFilms.vote_average)
+                    vote : ("voto del film: " + arrotondato)
                 };
                 var risultatoDaAggiungere = template(context);
                 $(".contenitor").append(risultatoDaAggiungere);
@@ -67,11 +80,23 @@ $(document).ready(function() {
               for (var i = 0; i < listaFilms.length; i++){
                 console.log(listaFilms[i]);
                 var ogniFilms = listaFilms[i];
+
+                // INIZIO OPERAZIONI PER IL VOTO
+                // salvo il voto in una var
+                var voto = ogniFilms.vote_average;
+                console.log(voto);
+                // divido il voto per 2 portandolo in scala 1 a 5
+                var diviso = voto / 2;
+                // arrotondo il risultato a numero intero
+                var arrotondato = Math.round(diviso);
+                console.log(arrotondato);
+                // FINE OPERAZIONI PER IL VOTO
+
                 var context = {
                     title: ("Titolo del film : " + ogniFilms.name),
                     origTitle : ("Titolo originale : " + ogniFilms.original_name),
                     language : ("Linguaggio: " + ogniFilms.original_language),
-                    vote : ("voto del film: " + ogniFilms.vote_average)
+                    vote : ("voto del film: " + arrotondato)
                 };
                 var risultatoDaAggiungere = template(context);
                 $(".contenitor").append(risultatoDaAggiungere);
