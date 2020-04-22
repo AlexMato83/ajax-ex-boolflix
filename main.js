@@ -35,7 +35,41 @@ $(document).ready(function() {
                 var ogniFilms = listaFilms[i];
                 var context = {
                     title: ("Titolo del film : " + ogniFilms.title),
-                    originaltitle : ("Titolo originale : " + ogniFilms.original_title),
+                    origTitle : ("Titolo originale : " + ogniFilms.original_title),
+                    language : ("Linguaggio: " + ogniFilms.original_language),
+                    vote : ("voto del film: " + ogniFilms.vote_average)
+                };
+                var risultatoDaAggiungere = template(context);
+                $(".contenitor").append(risultatoDaAggiungere);
+              }
+
+            }
+
+
+          })
+          // richiamo API per le serie
+          $.ajax({
+            url : "https://api.themoviedb.org/3/search/tv",
+
+            method : "GET",
+            data: {
+              api_key : "5bb55649ec151524f12d940e4df95515",
+              language : "it-IT",
+              query : searchMovie
+            },
+            success: function(data){
+              console.log(data.results);
+              // inizio handlebars
+              var source = $("#entry-template").html();
+              var template = Handlebars.compile(source);
+              var listaFilms = data.results;
+              // fine handlebars
+              for (var i = 0; i < listaFilms.length; i++){
+                console.log(listaFilms[i]);
+                var ogniFilms = listaFilms[i];
+                var context = {
+                    title: ("Titolo del film : " + ogniFilms.name),
+                    origTitle : ("Titolo originale : " + ogniFilms.original_name),
                     language : ("Linguaggio: " + ogniFilms.original_language),
                     vote : ("voto del film: " + ogniFilms.vote_average)
                 };
@@ -57,3 +91,5 @@ $(document).ready(function() {
 
 
 });
+// prendere il valore del voto, dividerlo per 2 ed arrotondarlo ad intero
+//
