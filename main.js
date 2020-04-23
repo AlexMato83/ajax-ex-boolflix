@@ -35,7 +35,7 @@ $(document).ready(function() {
               generaOutput(listaFilms, "film");
             }
           })
-          
+
           // richiamo API per le serie
           $.ajax({
             url : "https://api.themoviedb.org/3/search/tv",
@@ -67,7 +67,7 @@ $(document).ready(function() {
               // divido il voto per 2 portandolo in scala 1 a 5
               var diviso = voto / 2;
               // arrotondo il risultato a numero intero
-              var stellaPiena = Math.round(diviso);
+              var stellaPiena = Math.ceil(diviso);
               // salvo il numero di stelle vuote
               var stellaVuota = 5 - stellaPiena;
               // salvo l'icona per la stellaVuota e la stellaPiena
@@ -87,17 +87,27 @@ $(document).ready(function() {
               var context = {
                   title: ("Titolo del film : " + title),
                   origTitle : ("Titolo originale : " + originalTitle),
-                  language : "<img src='flags/"+ogniOggetto.original_language+".png' alt=''>",
+                  language : ("lingua: " + stampaBandiere(ogniOggetto.original_language)),
                   vote : stellinaPiena.repeat(stellaPiena) + stellinaVuota.repeat(stellaVuota)
               };
               var risultatoDaAggiungere = template(context);
               $(".contenitor").append(risultatoDaAggiungere);
             }
           }
-
-
+          // funzione per stampare le bandiere del original_language
+          function stampaBandiere(codiceLang) {
+            // creo e salvo array con riferimenti ai .png nella cartella flags del progetto
+            var codici = ["de","en","es","fr","it","ja","pt","zh"];
+            // creo var appoggio per la bandiera creata
+            var imgGenerata;
+            // se il codice estrapolato dall'oggetto è incluso tra i codici dei .png allora aggiungo bandiere
+            if(codici.includes(codiceLang)){
+              imgGenerata = '<img src="flags/' + codiceLang + '.png" alt="">'
+              return imgGenerata;
+            }
+            return codiceLang;
+          }
         }
-
       }
     )
 
