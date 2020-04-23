@@ -33,6 +33,11 @@ $(document).ready(function() {
 
               // richiamo la funzione assegnando la lista degli oggetti ed il parametro per i film
               generaOutput(listaFilms, "film");
+              // nascondo i dati dei film
+              $(".foundedFilms").hide();
+              // creo hover
+
+
             }
           })
 
@@ -51,6 +56,16 @@ $(document).ready(function() {
 
               // richiamo la funzione assegnando la lista degli oggetti ed il parametro per le serie
               generaOutput(listaFilms, "tv");
+              // nascondo i dati dei film
+              $(".foundedFilms").hide();
+              $(".poster-div").hover(function(){
+                $(this).hide();
+                $(this).siblings().show();
+              },function(){
+                $(this).show();
+                $(this).siblings().hide();
+
+              })
               }
           })
 
@@ -82,16 +97,23 @@ $(document).ready(function() {
               } else if (tipo === "tv"){
                 title = ogniOggetto.name;
                 originalTitle = ogniOggetto.original_name;
-
               }
+              // salvo stringa mancante ogni poster
+              var ogniPoster = ogniOggetto.poster_path;
+
               var context = {
                   title: ("Titolo del film : " + title),
                   origTitle : ("Titolo originale : " + originalTitle),
                   language : ("lingua: " + stampaBandiere(ogniOggetto.original_language)),
-                  vote : stellinaPiena.repeat(stellaPiena) + stellinaVuota.repeat(stellaVuota)
+                  vote : stellinaPiena.repeat(stellaPiena) + stellinaVuota.repeat(stellaVuota),
+                  locandina : "https://image.tmdb.org/t/p/w185" + ogniPoster
               };
               var risultatoDaAggiungere = template(context);
               $(".contenitor").append(risultatoDaAggiungere);
+
+
+
+
             }
           }
           // funzione per stampare le bandiere del original_language
@@ -107,6 +129,7 @@ $(document).ready(function() {
             }
             return codiceLang;
           }
+
         }
       }
     )
