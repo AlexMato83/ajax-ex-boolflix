@@ -115,10 +115,11 @@ $(document).ready(function() {
               var context = {
                   title: ("Titolo del film : " + title),
                   origTitle : ("Titolo originale : " + originalTitle),
-                  language : ("lingua: " + stampaBandiere(ogniOggetto.original_language)),
+                  language : ("Lingua: " + stampaBandiere(ogniOggetto.original_language)),
                   vote : stellinaPiena.repeat(stellaPiena) + stellinaVuota.repeat(stellaVuota),
                   locandina : "https://image.tmdb.org/t/p/w342" + ogniPoster,
-                  type : tipo
+                  type : tipo,
+                  overview : "Overview : <br/>" + ogniOggetto.overview
               };
               var risultatoDaAggiungere = template(context);
               $(".contenitor").append(risultatoDaAggiungere);
