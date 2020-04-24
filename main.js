@@ -1,8 +1,11 @@
 $(document).ready(function() {
-     $("input").add("#login_submit").bind("keypress click", function(){});
+
+
+
     // creo evento click collegato al button
     $("#search-button").click(
       function(){
+
         // salvo valore testo inserito nell'input
         var searchMovie = $("#search").val();
         if (searchMovie != ""){
@@ -32,12 +35,17 @@ $(document).ready(function() {
               var listaFilms = data.results;
 
               // richiamo la funzione assegnando la lista degli oggetti ed il parametro per i film
-              generaOutput(listaFilms, "film");
-              // nascondo i dati dei film
-              $(".foundedFilms").hide();
-              // creo hover
+              generaOutput(listaFilms, "FILM");
+              // creo alternanza tra dati e poster film
+              $(".contenitor").on("mouseenter", ".elemento",function(){
+                $(this).find(".poster-div").hide();
+                $(this).find(".foundedFilms").show();
+              });
 
-
+              $(".contenitor").on("mouseleave", ".elemento",function(){
+                $(this).find(".poster-div").show();
+                $(this).find(".foundedFilms").hide();
+              });
             }
           })
 
@@ -55,18 +63,19 @@ $(document).ready(function() {
               var listaFilms = data.results;
 
               // richiamo la funzione assegnando la lista degli oggetti ed il parametro per le serie
-              generaOutput(listaFilms, "tv");
-              // nascondo i dati dei film
-              $(".foundedFilms").hide();
-              $(".poster-div").hover(function(){
-                $(this).hide();
-                $(this).siblings().show();
-              },function(){
-                $(this).show();
-                $(this).siblings().hide();
+              generaOutput(listaFilms, "SERIE TV");
 
-              })
-              }
+
+              $(".contenitor").on("mouseenter", ".elemento",function(){
+                $(this).find(".poster-div").hide();
+                $(this).find(".foundedFilms").show();
+              });
+
+              $(".contenitor").on("mouseleave", ".elemento",function(){
+                $(this).find(".poster-div").show();
+                $(this).find(".foundedFilms").hide();
+              });
+            }
           })
 
 
@@ -75,6 +84,8 @@ $(document).ready(function() {
             for (var i = 0; i < listaOggetti.length; i++){
               // salvo ogni singolo oggetto della lista
               var ogniOggetto = listaOggetti[i];
+              // nascondo i dati sotto i poster
+              $(".foundedFilms").hide();
 
               // INIZIO OPERAZIONI PER IL VOTO
               // salvo il voto in una var
@@ -91,10 +102,10 @@ $(document).ready(function() {
               // FINE OPERAZIONI PER IL VOTO
               // creo variabili per titolo e titolo originale
               var title, originalTitle;
-              if (tipo === "film"){
+              if (tipo === "FILM"){
                 title = ogniOggetto.title;
                 originalTitle = ogniOggetto.original_title;
-              } else if (tipo === "tv"){
+              } else if (tipo === "SERIE TV"){
                 title = ogniOggetto.name;
                 originalTitle = ogniOggetto.original_name;
               }
@@ -106,7 +117,8 @@ $(document).ready(function() {
                   origTitle : ("Titolo originale : " + originalTitle),
                   language : ("lingua: " + stampaBandiere(ogniOggetto.original_language)),
                   vote : stellinaPiena.repeat(stellaPiena) + stellinaVuota.repeat(stellaVuota),
-                  locandina : "https://image.tmdb.org/t/p/w185" + ogniPoster
+                  locandina : "https://image.tmdb.org/t/p/w342" + ogniPoster,
+                  type : tipo
               };
               var risultatoDaAggiungere = template(context);
               $(".contenitor").append(risultatoDaAggiungere);
@@ -133,8 +145,4 @@ $(document).ready(function() {
         }
       }
     )
-
-
 });
-// prendere il valore del voto, dividerlo per 2 ed arrotondarlo ad intero
-//

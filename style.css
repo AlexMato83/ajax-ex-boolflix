@@ -6,7 +6,7 @@
   background: #D3D3D3;
 
 }
-
+/* inizio fascia di ricerca */
 .father-search{
   background: black;
   height: 50px;
@@ -30,15 +30,29 @@ label {
   color:white;
   background: black;
 }
+/* fine fascia di ricerca */
+
+/* inizio spazio films */
+.contenitor{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.elemento{
+  width: 342px;
+  height: 400px;
+  margin:15px;
+}
 .foundedFilms{
   background: #F0F8FF;
-  border:5px outset grey;
+  /* border:5px outset grey; */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 250px;
-  height: 350px;
-  margin: 15px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
 
 }
 .foundedFilms *{
@@ -48,25 +62,27 @@ label {
 .rosso{
   color: red;
 }
-.contenitor{
-  display: flex;
-  flex-wrap: wrap;
-
-}
-
 
 .language img{
   width: 30px;
   height: auto;
 }
-.poster img{
-  height: 100%;
-  width: 100%;
-}
 .poster-div{
+  width: 100%;
+  height: 100%;
+}
+.poster-div img{
+  width: 100%;
+  height: 100%;
+}
 
-  width: 250px;
-  height: 350px;
-  margin: 15px;
-
+.foundedFilms span:nth-child(5){
+  background: red;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  text-align: center;
 }
