@@ -74,11 +74,11 @@ label {
 .poster-div{
   width: 100%;
   height: 100%;
-  
+  position: relative;
 }
 .poster-div img{
   width: 100%;
-  height: 100%;
+  height: calc(100% - 20px);
 }
 .foundedFilms{
   background: #F0F8FF;
@@ -103,6 +103,16 @@ label {
 /* fine bandierine */
 /* inizio scritta tipo filmato */
 .foundedFilms span:nth-child(5){
+  background: red;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+}
+.poster-div span:nth-child(2){
   background: red;
   color: white;
   position: absolute;
