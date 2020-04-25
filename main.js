@@ -36,16 +36,7 @@ $(document).ready(function() {
 
               // richiamo la funzione assegnando la lista degli oggetti ed il parametro per i film
               generaOutput(listaFilms, "FILM");
-              // creo alternanza tra dati e poster film
-              $(".contenitor").on("mouseenter", ".elemento",function(){
-                $(this).find(".poster-div").hide();
-                $(this).find(".foundedFilms").show();
-              });
 
-              $(".contenitor").on("mouseleave", ".elemento",function(){
-                $(this).find(".poster-div").show();
-                $(this).find(".foundedFilms").hide();
-              });
             }
           })
 
@@ -66,15 +57,7 @@ $(document).ready(function() {
               generaOutput(listaFilms, "SERIE TV");
 
 
-              $(".contenitor").on("mouseenter", ".elemento",function(){
-                $(this).find(".poster-div").hide();
-                $(this).find(".foundedFilms").show();
-              });
 
-              $(".contenitor").on("mouseleave", ".elemento",function(){
-                $(this).find(".poster-div").show();
-                $(this).find(".foundedFilms").hide();
-              });
             }
           })
 
@@ -117,19 +100,30 @@ $(document).ready(function() {
                   origTitle : ("Titolo originale : " + originalTitle),
                   language : ("Lingua: " + stampaBandiere(ogniOggetto.original_language)),
                   vote : stellinaPiena.repeat(stellaPiena) + stellinaVuota.repeat(stellaVuota),
-                  locandina : "https://image.tmdb.org/t/p/w342" + ogniPoster,
+                  // locandina : "https://image.tmdb.org/t/p/w342" + ogniPoster,
+                  locandina: stampaPoster(ogniPoster),
                   type : tipo,
-                  overview : "Overview : <br/>" + ogniOggetto.overview
+                  overview : stampaOverview(ogniOggetto.overview)
               };
               var risultatoDaAggiungere = template(context);
               $(".contenitor").append(risultatoDaAggiungere);
 
 
 
-
+              // funzione per stampare i poster
+              function stampaPoster(fineUrl){
+                var posterStampato;
+              if (fineUrl){
+                var urlCompleto = "https://image.tmdb.org/t/p/w342" + fineUrl;
+                posterStampato =  '<img src="' + urlCompleto + '" alt="">';
+              } else {
+                posterStampato = '<img src="logo/null.jpg" alt="">';
+              }
+              return posterStampato;
+              }
             }
           }
-          // funzione per stampare le bandiere del original_language
+          // inizio funzione per stampare le bandiere del original_language
           function stampaBandiere(codiceLang) {
             // creo e salvo array con riferimenti ai .png nella cartella flags del progetto
             var codici = ["de","en","es","fr","it","ja","pt","zh"];
@@ -142,7 +136,30 @@ $(document).ready(function() {
             }
             return codiceLang;
           }
+          // fine funzione per stampare le bandiere del original_language
 
+          // inizio gestione dell'hover tra poster e dati
+           $(".contenitor").on("mouseenter", ".elemento",function(){
+             $(this).find(".poster-div").hide();
+             $(this).find(".foundedFilms").show();
+           });
+
+           $(".contenitor").on("mouseleave", ".elemento",function(){
+             $(this).find(".poster-div").show();
+             $(this).find(".foundedFilms").hide();
+           });
+           // fine gestione dell'hover tra poster e dati
+
+           // inizio funzione dell'Overview
+           function stampaOverview(dati) {
+             var risultato;
+             if (dati == ""){
+               risultato = "Siamo spiacenti, overview non disponibile.";
+             } else {
+               risultato = dati;
+             }
+             return risultato;
+           }
         }
       }
     )

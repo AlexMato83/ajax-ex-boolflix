@@ -64,16 +64,24 @@ label {
   flex-wrap: wrap;
   margin-top: 150px;
 }
-
+/* inizio elementi nel template */
 .elemento{
   width: 342px;
   height: 400px;
   margin:15px;
   border: 2px solid white;
 }
+.poster-div{
+  width: 100%;
+  height: 100%;
+  
+}
+.poster-div img{
+  width: 100%;
+  height: 100%;
+}
 .foundedFilms{
   background: #F0F8FF;
-  /* border:5px outset grey; */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -87,23 +95,13 @@ label {
   color:red;
   background: #F0F8FF;
 }
-.rosso{
-  color: red;
-}
-
+/* inizio bandierine */
 .language img{
   width: 30px;
   height: auto;
 }
-.poster-div{
-  width: 100%;
-  height: 100%;
-}
-.poster-div img{
-  width: 100%;
-  height: 100%;
-}
-
+/* fine bandierine */
+/* inizio scritta tipo filmato */
 .foundedFilms span:nth-child(5){
   background: red;
   color: white;
@@ -114,7 +112,11 @@ label {
   height: 20px;
   text-align: center;
 }
+/* fine scritta tipo filmato */
+/* inizio  descrizione film*/
 .panoramica{
   overflow: auto;
   margin-bottom:30px;
 }
+/* fine  descrizione film*/
+/* fine elementi nel template */
