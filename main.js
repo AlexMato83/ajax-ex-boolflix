@@ -19,47 +19,47 @@ $(document).ready(function() {
           // fine operazioni handlebars
 
           console.log(searchMovie);
+
           // richiamo API per i film
-          $.ajax({
-            url : "https://api.themoviedb.org/3/search/movie",
-            method : "GET",
-            data: {
-              api_key : "5bb55649ec151524f12d940e4df95515",
-              language : "it-IT",
-              query : searchMovie
-            },
-            success: function(data){
-              console.log(data.results);
+          chiamataAjax("FILM","5bb55649ec151524f12d940e4df95515",searchMovie,"https://api.themoviedb.org/3/search/movie")
 
-              // salvo lista degli oggetti
-              var listaFilms = data.results;
-
-              // richiamo la funzione assegnando la lista degli oggetti ed il parametro per i film
-              generaOutput(listaFilms, "FILM");
-
-            }
-          })
+          // $.ajax({
+          //   url : "https://api.themoviedb.org/3/search/movie",
+          //   method : "GET",
+          //   data: {
+          //     api_key : "5bb55649ec151524f12d940e4df95515",
+          //     language : "it-IT",
+          //     query : searchMovie
+          //   },
+          //   success: function(data){
+          //     console.log(data.results);
+          //
+          //     // salvo lista degli oggetti
+          //     var listaFilms = data.results;
+          //
+          //     // richiamo la funzione assegnando la lista degli oggetti ed il parametro per i film
+          //     generaOutput(listaFilms, "FILM");
+          //   }
+          // })
 
           // richiamo API per le serie
-          $.ajax({
-            url : "https://api.themoviedb.org/3/search/tv",
-            method : "GET",
-            data: {
-              api_key : "5bb55649ec151524f12d940e4df95515",
-              language : "it-IT",
-              query : searchMovie
-            },
-            success: function(data){
-              // salvo lista degli oggetti
-              var listaFilms = data.results;
-
-              // richiamo la funzione assegnando la lista degli oggetti ed il parametro per le serie
-              generaOutput(listaFilms, "SERIE TV");
-
-
-
-            }
-          })
+          chiamataAjax("SERIE TV","5bb55649ec151524f12d940e4df95515",searchMovie,"https://api.themoviedb.org/3/search/tv")
+          // $.ajax({
+          //   url : "https://api.themoviedb.org/3/search/tv",
+          //   method : "GET",
+          //   data: {
+          //     api_key : "5bb55649ec151524f12d940e4df95515",
+          //     language : "it-IT",
+          //     query : searchMovie
+          //   },
+          //   success: function(data){
+          //     // salvo lista degli oggetti
+          //     var listaFilms = data.results;
+          //
+          //     // richiamo la funzione assegnando la lista degli oggetti ed il parametro per le serie
+          //     generaOutput(listaFilms, "SERIE TV");
+          //   }
+          // })
 
 
           // creo funzione per stampare in pagina
@@ -160,6 +160,29 @@ $(document).ready(function() {
              }
              return risultato;
            }
+           // fine funzione dell'Overview
+
+           // inizio funzione chiamate Ajax
+           function chiamataAjax(tipo,apikey,query,url){
+             $.ajax({
+               url : url,
+               method : "GET",
+               data: {
+                 api_key : apikey,
+                 language : "it-IT",
+                 query : query
+               },
+               success: function(data){
+                 // salvo lista degli oggetti
+                 var listaFilms = data.results;
+
+                 // richiamo la funzione assegnando la lista degli oggetti ed il parametro per le serie
+                 generaOutput(listaFilms, tipo);
+               }
+             })
+           }
+           // fine funzione chiamate Ajax
+
         }
       }
     )
