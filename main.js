@@ -64,7 +64,7 @@ $(document).ready(function() {
 
           // creo funzione per stampare in pagina
           function generaOutput(listaOggetti, tipo) {
-            for (var i = 0; i < listaOggetti.length; i++){
+            for (var i = 0; i <= listaOggetti.length; i++){
               // salvo ogni singolo oggetto della lista
               var ogniOggetto = listaOggetti[i];
               // nascondo i dati sotto i poster
