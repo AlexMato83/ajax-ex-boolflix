@@ -126,7 +126,7 @@ label {
 /* inizio  descrizione film*/
 .panoramica{
   overflow: auto;
-  margin: 20px 0 30px 0;
+  margin: 20px 10px 30px 10px;
 }
 /* fine  descrizione film*/
 /* fine elementi nel template */
